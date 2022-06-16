@@ -3,6 +3,7 @@ import prisma from 'lib/prisma'
 import { getPost, getSubreddit } from 'lib/data.js'
 import timeago from 'lib/timeago'
 
+
 export default function Post({ subreddit, post }) {
     if (!post) return <p className='text-center p-5'>Post does not exist 😞</p>
     return (
