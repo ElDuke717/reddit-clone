@@ -33,7 +33,6 @@ export default function Post({ subreddit, post, votes, vote }) {
     }
     return (
         <>
-
             <header className='bg-black text-white h-12 flex pt-3 px-5 pb-2'>
                 <Link href={`/`}>
                     <a className='underline'>Home</a>
@@ -46,7 +45,6 @@ export default function Post({ subreddit, post, votes, vote }) {
                 </Link>
                 <p className='ml-4 text-left grow'>{subreddit.description}</p>
             </header>
-
             <div className='flex flex-row mb-4  px-10 justify-center'>
                 <div className='flex flex-col mb-4 border-t border-l border-b border-3 border-black p-10 bg-gray-200 my-10 text-center'>
                     <div
@@ -69,12 +67,14 @@ export default function Post({ subreddit, post, votes, vote }) {
                         {!vote ? '↓' : vote?.up ? '↓' : '⬇'}
                     </div>
                 </div>
-
-                <div className='flex flex-col mb-4 border border-3 border-black p-10 bg-gray-200 mx-20 my-10'>
+                <div className='flex flex-col mb-4 border-t border-r border-b border-3 border-black p-10 pl-0 bg-gray-200 my-10'>
                     <div className='flex flex-shrink-0 pb-0 '>
                         <div className='flex-shrink-0 block group '>
                             <div className='flex items-center text-gray-800'>
-                                Posted by {post.author.name}{' '}
+                                Posted by{' '}
+                                <Link href={`/u/${post.author.name}`}>
+                                    <a className='ml-1 underline'>{post.author.name}</a>
+                                </Link>{' '}
                                 <p className='mx-2 underline'>
                                     {timeago.format(new Date(post.createdAt))}
                                 </p>
@@ -85,6 +85,12 @@ export default function Post({ subreddit, post, votes, vote }) {
                         <a className='flex-shrink text-2xl font-bold color-primary width-auto'>
                             {post.title}
                         </a>
+                        {post.image && (
+                            <img
+                                className='flex-shrink text-base font-normal color-primary width-auto mt-2'
+                                src={post.image}
+                            />
+                        )}
                         <p className='flex-shrink text-base font-normal color-primary width-auto mt-2'>
                             {post.content}
                         </p>
