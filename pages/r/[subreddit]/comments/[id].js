@@ -106,7 +106,7 @@ export default function Post({ subreddit, post, votes, vote }) {
                         </p>
                     )}
                     {/* comments are returned from the posts.  See getPosts in lib/data.js to see how they are pulled in. */}
-                    <Comments comments={post.comments} />
+                    <Comments comments={post.comments} post={post} />
                 </div>
             </div>
         </>
