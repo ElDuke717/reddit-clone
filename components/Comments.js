@@ -8,7 +8,10 @@ const Comment = ({ comment, post }) => {
     return (
         <div className=' mt-6'>
             <p>
-                {comment.author.name} {timeago.format(new Date(comment.createdAt))}
+                <Link href={`/u/${comment.author.name}`}>
+                    <a className='underline'>{comment.author.name}</a>
+                </Link>{' '}
+                {timeago.format(new Date(comment.createdAt))}
             </p>
             <p>{comment.content}</p>
             {showReply ? (
@@ -34,7 +37,6 @@ export default function Comments({ comments, post }) {
         <>
             {comments.map((comment, index) => (
                 <>
-                    {console.log(comments)}
                     <Comment key={index} comment={comment} post={post} />
                     {comment.comments && (
                         <div className='pl-10'>

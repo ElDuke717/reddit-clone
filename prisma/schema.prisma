@@ -12,16 +12,17 @@ datasource db {
 
 model User {
   id            String    @id @default(cuid())
-  name          String?
+  name          String?   @unique
   email         String?   @unique
+  username      String?   @unique
   emailVerified DateTime?
   image         String?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   accounts      Account[]
   sessions      Session[]
-  posts         Post[]
-  comments      Comment[]
+  Post          Post[]
+  Comment       Comment[]
   Vote          Vote[]
 }
 

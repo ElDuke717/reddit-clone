@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import prisma from 'lib/prisma'
 import { getSubreddit, getPostsFromSubreddit } from 'lib/data.js'
-import { userRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
 
 import Posts from 'components/Posts'
 
 export default function Subreddit({ subreddit, posts }) {
+    const router = useRouter()
     const { data: session, status } = useSession()
     const loading = status === 'loading'
 
