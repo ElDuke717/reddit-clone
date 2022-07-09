@@ -78,8 +78,8 @@ handler.post(async (req, res) => {
 
     res.json(post)
     return
-}
-    export const config = {
+})
+export const config = {
     api: {
         bodyParser: false,
     },

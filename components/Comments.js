@@ -1,6 +1,7 @@
 import timeago from 'lib/timeago'
 import { useState } from 'react'
 import NewComment from 'components/NewComment'
+import Link from 'next/link'
 
 const Comment = ({ comment, post }) => {
     const [showReply, setShowReply] = useState(false)
@@ -16,7 +17,7 @@ const Comment = ({ comment, post }) => {
             <p>{comment.content}</p>
             {showReply ? (
                 <div className='pl-10'>
-                    <NewComment comment={comment} post={post} />
+                    <NewComment post={post} comment={comment} />
                 </div>
             ) : (
                 <p
